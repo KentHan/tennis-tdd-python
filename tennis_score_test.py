@@ -9,7 +9,7 @@ class TennisScoreTest(unittest.TestCase):
        sut = TennisScore()
        self.assertEqual("Love All", sut.get_score())
 
-   def test_fiften_love(self):
+   def test_fifteen_love(self):
        sut = TennisScore()
        sut.add_score(1,1)
        self.assertEqual("Fifteen Love", sut.get_score())
@@ -18,3 +18,8 @@ class TennisScoreTest(unittest.TestCase):
        sut = TennisScore()
        sut.add_score(1,2)
        self.assertEqual("Thirty Love", sut.get_score())
+
+   def test_forty_love(self):
+       sut = TennisScore()
+       sut.add_score(1, 3)
+       self.assertEqual("Forty Love", sut.get_score())
