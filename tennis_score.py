@@ -2,17 +2,14 @@ class TennisScore(object):
     def __init__(self):
         self.player_1_score = 0
         self.player_2_score = 0
-        self.score_mapping = {1:"Fifteen", 2:"Thirty", 3:"Forty"}
+        self.score_mapping = {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}
 
     def get_score(self):
-        if self.player_1_score + self.player_2_score == 0:
-            return "Love All"
-        elif self.player_2_score == 0:
-            return '%s Love' % self.score_mapping[self.player_1_score]
-        elif self.player_1_score == 0:
-            return 'Love %s' % self.score_mapping[self.player_2_score]
-        elif self.player_1_score == 1 and self.player_2_score == 1:
-            return "Fifteen All"
+        if self.player_1_score == self.player_2_score:
+            return '%s All' % self.score_mapping[self.player_1_score]
+        else:
+            return '%s %s' % (self.score_mapping[self.player_1_score]
+                              , self.score_mapping[self.player_2_score])
 
     def add_score(self, player, times):
         if player == 1:
