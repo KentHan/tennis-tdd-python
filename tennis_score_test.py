@@ -28,3 +28,14 @@ class TennisScoreTest(unittest.TestCase):
        sut = TennisScore()
        sut.add_score(2, 1)
        self.assertEqual("Love Fifteen", sut.get_score())
+
+   def test_love_thirty(self):
+       sut = TennisScore()
+       sut.add_score(2, 2)
+       self.assertEqual("Love Thirty", sut.get_score())
+
+   def test_love_forty(self):
+       sut = TennisScore()
+       sut.add_score(2, 3)
+       self.assertEqual("Love Forty", sut.get_score())
+
