@@ -9,6 +9,8 @@ class TennisScore(object):
             return "Love All"
         elif self.player_2_score == 0:
             return '%s Love' % self.score_mapping[self.player_1_score]
+        elif self.player_1_score == 0:
+            return 'Love %s' % self.score_mapping[self.player_2_score]
 
     def add_score(self, player, times):
         if player == 1:
