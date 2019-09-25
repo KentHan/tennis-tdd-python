@@ -6,7 +6,6 @@ from tennis_score import TennisScore
 class TennisScoreTest(unittest.TestCase):
    def setUp(self):
        self.sut = TennisScore()
-    
 
    def test_love_all(self):
        self.assertEqual("Love All", self.sut.get_score())
@@ -39,3 +38,8 @@ class TennisScoreTest(unittest.TestCase):
        self.sut.add_score(1, 1)
        self.sut.add_score(2, 1)
        self.assertEqual("Fifteen All", self.sut.get_score())
+
+   def test_thirty_all(self):
+       self.sut.add_score(1, 2)
+       self.sut.add_score(2, 2)
+       self.assertEqual("Thirty All", self.sut.get_score())
