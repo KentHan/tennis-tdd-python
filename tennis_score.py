@@ -13,15 +13,11 @@ class TennisScore(object):
             return '%s All' % self.score_mapping[self.player_1_score]
         else:
             if self.is_Adv():
-                if self.player_1_score > self.player_2_score:
-                    return '%s Adv' % self.player_1_name
-                else:
-                    return '%s Adv' % self.player_2_name
+                return '%s Adv' % (self.player_1_name if self.player_1_score > self.player_2_score else self.player_2_name)
+
             elif self.is_Win():
-                if self.player_1_score > self.player_2_score:
-                    return '%s Win' % self.player_1_name
-                else:
-                    return '%s Win' % self.player_2_name
+                return '%s Win' % (self.player_1_name if self.player_1_score > self.player_2_score else self.player_2_name)
+
             else:
                 return '%s %s' % (self.score_mapping[self.player_1_score]
                                   , self.score_mapping[self.player_2_score])
