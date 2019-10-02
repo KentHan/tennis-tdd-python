@@ -8,15 +8,9 @@ class TennisScore(object):
 
     def get_score(self):
         if self.is_same_score():
-            if self.is_deuce():
-                return self.get_deuce_status()
-            return self.get_tie_score()
+            return self.get_deuce_status() if self.is_deuce() else self.get_tie_score()
         else:
-            if self.is_win_or_adv():
-                return self.get_adv_status() if self.is_Adv() else self.get_win_status()
-
-            else:
-                return self.lookup_score()
+            return self.get_status() if self.is_win_or_adv() else self.lookup_score()
 
     def get_deuce_status(self):
         return 'Deuce'
@@ -28,8 +22,8 @@ class TennisScore(object):
         return '%s %s' % (self.score_mapping[self.player_1_score]
                           , self.score_mapping[self.player_2_score])
 
-    def get_win_status(self):
-        return '%s Win' % self.get_leader()
+    def get_status(self):
+        return '%s %s' % (self.get_leader(), ('Win' if self.is_win() else 'Adv'))
 
     def get_adv_status(self):
         return '%s Adv' % self.get_leader()
@@ -51,14 +45,14 @@ class TennisScore(object):
         else:
             return False
 
-    def is_Adv(self):
+    def is_adv(self):
         return self.player_1_score >= 3 and self.player_2_score >= 3 and abs(self.player_1_score - self.player_2_score) == 1
 
-    def is_Win(self):
-        return self.player_1_score >= 4 or self.player_2_score >= 4 and abs(self.player_1_score - self.player_2_score) >= 2
+    def is_win(self):
+        return (self.player_1_score >= 4 or self.player_2_score >= 4) and abs(self.player_1_score - self.player_2_score) >= 2
 
     def is_win_or_adv(self):
-        return self.is_Win() or self.is_Adv()
+        return self.is_win() or self.is_adv()
 
     def is_same_score(self):
         return self.player_1_score == self.player_2_score
