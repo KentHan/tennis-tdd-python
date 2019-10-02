@@ -9,17 +9,17 @@ class TennisScore(object):
             if self.is_deuce():
                 return 'Deuce'
             return '%s All' % self.score_mapping[self.player_1_score]
-
         else:
             if self.is_Adv():
                 if self.player_1_score > self.player_2_score:
                     return 'Ace Adv'
                 else:
                     return 'Ben Adv'
-            elif self.player_1_score >= 4 and self.player_1_score - self.player_2_score >= 2:
-                return 'Ace Win'
-            elif self.player_2_score >= 4 and self.player_2_score - self.player_1_score >= 2:
-                return 'Ben Win'
+            elif self.is_Win():
+                if self.player_1_score > self.player_2_score:
+                    return 'Ace Win'
+                else:
+                    return 'Ben Win'
             else:
                 return '%s %s' % (self.score_mapping[self.player_1_score]
                                   , self.score_mapping[self.player_2_score])
@@ -40,3 +40,6 @@ class TennisScore(object):
 
     def is_Adv(self):
         return self.player_1_score >= 3 and self.player_2_score >= 3 and abs(self.player_1_score - self.player_2_score) == 1
+
+    def is_Win(self):
+        return self.player_1_score >= 4 or self.player_2_score >= 4 and abs(self.player_1_score - self.player_2_score) >= 2
