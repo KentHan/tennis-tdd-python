@@ -11,11 +11,11 @@ class TennisScore(object):
             return '%s All' % self.score_mapping[self.player_1_score]
 
         else:
-            if self.player_1_score >= 3 and self.player_2_score >= 3 and self.player_1_score - self.player_2_score == 1:
-                return 'Ace Adv'
-            elif self.player_1_score >= 3 and self.player_2_score >= 3 and self.player_2_score - self.player_1_score == 1:
-                return 'Ben Adv'
-
+            if self.is_Adv():
+                if self.player_1_score > self.player_2_score:
+                    return 'Ace Adv'
+                else:
+                    return 'Ben Adv'
             else:
                 return '%s %s' % (self.score_mapping[self.player_1_score]
                                   , self.score_mapping[self.player_2_score])
@@ -33,3 +33,6 @@ class TennisScore(object):
             return True
         else:
             return False
+
+    def is_Adv(self):
+        return self.player_1_score >= 3 and self.player_2_score >= 3 and abs(self.player_1_score - self.player_2_score) == 1
