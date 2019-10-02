@@ -2,6 +2,8 @@ class TennisScore(object):
     def __init__(self):
         self.player_1_score = 0
         self.player_2_score = 0
+        self.player_1_name = 'Ace'
+        self.player_2_name = 'Ben'
         self.score_mapping = {0: "Love", 1: "Fifteen", 2: "Thirty", 3: "Forty"}
 
     def get_score(self):
@@ -12,14 +14,14 @@ class TennisScore(object):
         else:
             if self.is_Adv():
                 if self.player_1_score > self.player_2_score:
-                    return 'Ace Adv'
+                    return '%s Adv' % self.player_1_name
                 else:
-                    return 'Ben Adv'
+                    return '%s Adv' % self.player_2_name
             elif self.is_Win():
                 if self.player_1_score > self.player_2_score:
-                    return 'Ace Win'
+                    return '%s Win' % self.player_1_name
                 else:
-                    return 'Ben Win'
+                    return '%s Win' % self.player_2_name
             else:
                 return '%s %s' % (self.score_mapping[self.player_1_score]
                                   , self.score_mapping[self.player_2_score])
