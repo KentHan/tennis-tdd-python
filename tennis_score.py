@@ -6,7 +6,7 @@ class TennisScore(object):
 
     def get_score(self):
         if self.player_1_score == self.player_2_score:
-            if self.player_1_score >= 3:
+            if self.is_deuce():
                 return 'Deuce'
             return '%s All' % self.score_mapping[self.player_1_score]
 
@@ -27,3 +27,9 @@ class TennisScore(object):
             self.player_2_score += times
         else:
             raise Exception("only two player")
+
+    def is_deuce(self):
+        if self.player_1_score == self.player_2_score and self.player_2_score >= 3:
+            return True
+        else:
+            return False
