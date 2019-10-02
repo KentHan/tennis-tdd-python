@@ -11,6 +11,8 @@ class TennisScore(object):
             return '%s All' % self.score_mapping[self.player_1_score]
 
         else:
+            if self.player_1_score and self.player_2_score ==3 and self.player_1_score - self.player_2_score ==1:
+                return 'Ace Adv'
             return '%s %s' % (self.score_mapping[self.player_1_score]
                               , self.score_mapping[self.player_2_score])
 
