@@ -6,7 +6,10 @@ class TennisScore(object):
 
     def get_score(self):
         if self.player_1_score == self.player_2_score:
+            if self.player_1_score >= 3:
+                return 'Deuce'
             return '%s All' % self.score_mapping[self.player_1_score]
+
         else:
             return '%s %s' % (self.score_mapping[self.player_1_score]
                               , self.score_mapping[self.player_2_score])
