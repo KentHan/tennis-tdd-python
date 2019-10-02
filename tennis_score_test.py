@@ -65,3 +65,12 @@ class TennisScoreTest(unittest.TestCase):
         self.sut.add_score(2, 3)
         self.assertEqual("Ace Win", self.sut.get_score())
 
+    def test_Ben_win(self):
+        self.sut.add_score(1, 3)
+        self.sut.add_score(2, 5)
+        self.assertEqual("Ben Win", self.sut.get_score())
+
+    def test_4_1(self):
+        self.sut.add_score(1, 4)
+        self.sut.add_score(2, 1)
+        self.assertEqual("Ace Win", self.sut.get_score())

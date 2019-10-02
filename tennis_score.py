@@ -16,8 +16,10 @@ class TennisScore(object):
                     return 'Ace Adv'
                 else:
                     return 'Ben Adv'
-            elif self.player_1_score > 4 and self.player_1_score - self.player_2_score >= 2:
+            elif self.player_1_score >= 4 and self.player_1_score - self.player_2_score >= 2:
                 return 'Ace Win'
+            elif self.player_2_score >= 4 and self.player_2_score - self.player_1_score >= 2:
+                return 'Ben Win'
             else:
                 return '%s %s' % (self.score_mapping[self.player_1_score]
                                   , self.score_mapping[self.player_2_score])
